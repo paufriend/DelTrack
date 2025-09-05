@@ -42,7 +42,7 @@ DelTrack es un proyecto de tesis que implementa un sistema de seguimiento y loca
 
 ### 1. Clonar el repositorio
 ```bash
-git clone https://github.com/[tu-usuario]/DelTrack.git
+git clone https://github.com/paufriend/DelTrack.git
 cd DelTrack
 ```
 
@@ -50,6 +50,10 @@ cd DelTrack
 ```bash
 cd backend
 pip install -r requirements.txt
+
+# Copiar y configurar variables de entorno
+cp .env.example .env
+# Editar .env con tus credenciales reales de ThingSpeak
 ```
 
 ### 3. Configurar el Frontend
@@ -108,11 +112,21 @@ DelTrack/
 
 ## Configuración MQTT
 
-El sistema utiliza ThingSpeak como broker MQTT. Las configuraciones principales se encuentran en `mqtt_client.py`:
+El sistema utiliza ThingSpeak como broker MQTT. Para configurar las credenciales:
 
-- Canal de recepción de telemetría: `2983140`
-- Canal de envío de comandos: `3038672`
+1. **Copia el archivo de ejemplo**: `cp backend/.env.example backend/.env`
+2. **Edita el archivo `.env`** con tus credenciales reales de ThingSpeak:
+   - `MQTT_CLIENT_ID`: Tu Client ID de ThingSpeak
+   - `MQTT_PASSWORD`: Tu MQTT API Key de ThingSpeak  
+   - `READ_API_KEY`: Tu Read API Key del canal
+   - `CHANNEL_ID_RECEIVE`: ID del canal donde recibes datos (por defecto: 2983140)
+   - `CHANNEL_ID_PUBLISH`: ID del canal donde publicas comandos (por defecto: 3038672)
+
+### Configuraciones por defecto:
 - Broker: `mqtt3.thingspeak.com`
+- Puerto: `1883`
+
+⚠️ **Importante**: El archivo `.env` contiene credenciales sensibles y está excluido del control de versiones.
 
 ## Contribuir
 

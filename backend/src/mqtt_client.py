@@ -2,12 +2,17 @@
 import paho.mqtt.client as mqtt
 import Localizador
 import time
+import os
+from dotenv import load_dotenv
+
+# Cargar variables de entorno
+load_dotenv()
 
 # --------------- NUEVO: cliente global ---------------
 client = None  # <- accesible desde main.py para publicar
 
 # Canal al que PUBLICAREMOS comandos (donde escucha el Heltec)
-PUBLISH_CHANNEL_ID = "3038672"
+PUBLISH_CHANNEL_ID = os.getenv("CHANNEL_ID_PUBLISH", "3038672")
 PUBLISH_FIELD = "field1"  # el Heltec se suscribe a field1
 # -----------------------------------------------------
 
@@ -15,14 +20,14 @@ Localizadores = [Localizador.Localizador("1", "field1", "1234"),
                  Localizador.Localizador("2", "field2", "5678")]
 print("Localizadores inicializados:", Localizadores)
 
-# === CONFIGURACIÓN ===
-CHANNEL_ID = "2983140"  # Canal donde RECIBES telemetría
-READ_API_KEY = "6UB2JU56LS2270R2"
-MQTT_BROKER = "mqtt3.thingspeak.com"
-MQTT_PORT = 1883
-MQTT_CLIENTID = "MwMFJRoDDyYMBBEIFzMgNDk"
+# === CONFIGURACIÓN CON VARIABLES DE ENTORNO ===
+CHANNEL_ID = os.getenv("CHANNEL_ID_RECEIVE", "2983140")  # Canal donde RECIBES telemetría
+READ_API_KEY = os.getenv("READ_API_KEY", "")
+MQTT_BROKER = os.getenv("MQTT_BROKER", "mqtt3.thingspeak.com")
+MQTT_PORT = int(os.getenv("MQTT_PORT", "1883"))
+MQTT_CLIENTID = os.getenv("MQTT_CLIENT_ID", "")
 user = MQTT_CLIENTID
-password = "xUh7B+/3tVBsWQP+T4v13/4x"
+password = os.getenv("MQTT_PASSWORD", "")
 
 MQTT_TOPICS = []
 for i in Localizadores:
