@@ -143,6 +143,6 @@ Este proyecto es parte de una tesis académica.
 ## Contacto
 
 Paula Solorzano Friend - [pgsolorz@espol.edu.ec]
-Johan Gutierrez Macias - [@espol.edu.ec]
+Johan Gutierrez Macias - [johrguti@espol.edu.ec]
 
 Enlace del Proyecto: [https://github.com/paufriend/DelTrack](https://github.com/paufriend/DelTrack)
