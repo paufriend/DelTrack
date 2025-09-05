@@ -1,0 +1,42 @@
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    /* The following directives require Tailwind CSS and PostCSS setup */
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    :root {
+        --font-poppins: 'Poppins', sans-serif;
+        color-scheme: dark;
+        --brand: 221 83% 53%; /* #2563eb */
+        --brand2: 187 92% 59%;    /* #22d3ee */
+        --muted: 215 20% 45%; /* slate-600 aprox */
+        --muted-dark: 215 16% 72%;    /* slate-400 aprox */
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {        /* puedes ajustar solo variables si quieres */
+            }
+        }
+
+.leaflet-interactive.pulse {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        stroke-opacity: 0.95;
+        fill-opacity: 0.25;
+        r: 14;
+    }
+
+    50% {
+        stroke-opacity: 0.30;
+        fill-opacity: 0.05;
+        r: 22;
+    }
+
+    100% {
+        stroke-opacity: 0.95;
+        fill-opacity: 0.25;
+        r: 14;
+    }
+}
